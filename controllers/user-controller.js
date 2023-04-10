@@ -1,7 +1,7 @@
 const { User, Thought } = require("../models");
 
-const userController = {
-  // get all users
+const UC = {
+  
   getAllUser(req, res) {
     User.find({})
       .populate({
@@ -17,7 +17,7 @@ const userController = {
       });
   },
 
-  // get one user by id
+  
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .populate({
@@ -43,15 +43,14 @@ const userController = {
       });
   },
 
-  // create user
-  createUser({ body }, res) {
+  cU({ body }, res) {
     User.create(body)
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.json(err));
   },
 
-  // update user by id
-  updateUser({ params, body }, res) {
+  
+  uU({ params, body }, res) {
     User.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
       runValidators: true,
@@ -66,15 +65,14 @@ const userController = {
       .catch((err) => res.json(err));
   },
 
-  // delete user
-  deleteUser({ params }, res) {
+  
+  dU({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
       .then((dbUserData) => {
         if (!dbUserData) {
           return res.status(404).json({ message: "No user with this id!" });
         }
-        // BONUS: get ids of user's `thoughts` and delete them all
-        // $in to find specific things
+        
         return Thought.deleteMany({ _id: { $in: dbUserData.thoughts } });
       })
       .then(() => {
@@ -83,8 +81,8 @@ const userController = {
       .catch((err) => res.json(err));
   },
 
-  // add friend
-  addFriend({ params }, res) {
+  
+  aF({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
       { $addToSet: { friends: params.friendId } },
@@ -100,7 +98,7 @@ const userController = {
       .catch((err) => res.json(err));
   },
 
-  // delete friend
+  
   removeFriend({ params }, res) {
     User.findOneAndUpdate(
       { _id: params.userId },
@@ -109,11 +107,11 @@ const userController = {
     )
       .then((dbUserData) => {
         if (!dbUserData) {
-          return res.status(404).json({ message: "No user with this id!" });
+          return res.status(404).json({ message: "Id doesnt exist!" });
         }
         res.json(dbUserData);
       })
       .catch((err) => res.json(err));
   },
 };
-module.exports = userController;
+module.exports = UC;
