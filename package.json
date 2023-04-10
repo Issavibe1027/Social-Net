@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joce1ynn/social-network-API-NoSQL.git"
+    "url": "git+https://github.com/Issavibe1027/Social-Net.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/joce1ynn/social-network-API-NoSQL/issues"
+    "url": "https://github.com/Issavibe1027/Social-Net.git-network-API-NoSQL/issues"
   },
-  "homepage": "https://github.com/joce1ynn/social-network-API-NoSQL#readme",
+  "homepage": "https://github.com/Issavibe1027/Social-Net.git-network-API-NoSQL#readme",
   "dependencies": {
     "express": "^4.17.3",
     "mongoose": "^6.2.9"
