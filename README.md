@@ -5,8 +5,6 @@ It's an API for a social network web application where users can share their tho
 
 
 
-#### Walkthrough Video
 
-(https://www.awesomescreenshot.com/video/8271915?key=4160443a4094cf7c0af7d25991652853)
 
 
